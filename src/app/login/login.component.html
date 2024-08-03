@@ -1,0 +1,47 @@
+<div class="login-container">
+    <div class="welcome-message text-center mb-4">
+      Welcome to admin Panel <br />
+      BisConnect
+    </div>
+    <div class="login-card">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="d-flex flex-column">
+        <i class="fas fa-sign-in-alt fs-3 text-center text-success pb-2"></i>
+        <h2 class="text-center mb-4 sing">Sign In</h2>
+        <div class="form-group mb-3">
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+            class="form-control"
+          />
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger error">
+            Email is required
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <div class="password-wrapper">
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Password"
+              class="form-control"
+            />
+            <button type="button" class="password-toggle" (click)="togglePassword()">
+              <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+            </button>
+          </div>
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger error">
+            Password is required
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary w-75 py-3 my-4 sinIn">
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
